@@ -1,0 +1,11 @@
+/* globalStyles.module.css */
+
+:global(th),
+:global(td) {
+  width: 100%;
+  word-wrap: break-word;
+  white-space: nowrap;
+  color: black;
+  border: 1px solid #000;
+}
+

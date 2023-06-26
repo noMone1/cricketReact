@@ -1,0 +1,85 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@media (max-width: 1000px) {
+  .hide-on-mobile {
+    display: none;
+  }
+}
+
+
+th,
+td {
+  width: 100%;
+  word-wrap: break-word;
+  white-space: nowrap;
+  color: black;
+  border: 1px solid #000;
+
+
+}
+
+.blue-column {
+  background-color: #faa9ba;
+  color: white;
+}
+
+.red-column {
+  background-color: #72bbef;
+  color: white;
+}
+
+.scrollable-div {
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.navbar {
+  background-color: #480760;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand img {
+  height: 60px;
+  margin-right: 10px;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #f9f9f9;
+
+}
+
+.table.table-responsive {
+  margin-bottom: 0;
+  /* Remove bottom margin */
+}
+
+.hidden {
+  display: none;
+}
+.input-number {
+width: 100%;
+padding-right: 28px;
+}
