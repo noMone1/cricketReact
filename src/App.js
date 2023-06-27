@@ -15,7 +15,7 @@ function App() {
           <h2>Left Section</h2>
           <p>This content is displayed in all screen sizes.</p>
         </div>
-          <div className="col-lg-6 col-md-12 scrollable-content">
+          <div className="col-lg-6 col-md-12 scrollable-content p-0 " >
             <div className="container">
             <MiddleSection />
             </div>
