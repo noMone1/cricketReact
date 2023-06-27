@@ -6,14 +6,30 @@ const Bet1 = () => {
     const [isRowsVisible, setIsRowsVisible] = useState(false);
     const [isRowsVisible2, setIsRowsVisible2] = useState(false);
     const [isRowsVisible3, setIsRowsVisible3] = useState(false);
+    const [color, setColor] = useState("");
 
-    const toggleRowsVisibility = () => {
+    const toggleRowsVisibility = (color) => {
+        setColor(color);
+        if(isRowsVisible===false){
+            setIsRowsVisible2(false);
+            setIsRowsVisible3(false);
+        }
         setIsRowsVisible(!isRowsVisible);
       };
-    const toggleRowsVisibility2 = () => {
+    const toggleRowsVisibility2 = (color) => {
+        setColor(color);
+        if(isRowsVisible2===false){
+            setIsRowsVisible3(false);
+            setIsRowsVisible(false);
+        }
         setIsRowsVisible2(!isRowsVisible2);
       };
-    const toggleRowsVisibility3 = () => {
+    const toggleRowsVisibility3 = (color) => {
+        setColor(color);
+        if(isRowsVisible3===false){
+            setIsRowsVisible2(false);
+            setIsRowsVisible(false);
+        }
         setIsRowsVisible3(!isRowsVisible3);
       };
     return (
@@ -47,7 +63,7 @@ const Bet1 = () => {
                 <thead>
                     <tr className={styles.globalTh} style={{ border: "1px solid #000" }}>
                         <th className={styles.globalTh} style={{ height: "50%", width: "50%" }}>
-                            <div style={{ padding: "5px", backgroundColor: "#bed5d8" }}>Min/Max 100-1000</div>
+                            <div style={{ padding: "5px", backgroundColor: "#bed5d8", fontSize:"13px" }}>Min/Max 100-1000</div>
                         </th>
                         <th className={styles.globalTh} style={{ width: "20%", textAlign: "center", 
                         color: "rgb(0, 0, 0)", backgroundColor: "#72bbef" }} >
@@ -68,17 +84,17 @@ const Bet1 = () => {
                             <div style={{ width: '60%', fontWeight: 'bold' }}><a>England</a><br /><a style={{ color: 'red' }}>→ 1.22</a></div>
                         </th>
                         <th className={styles.globalTh} style={{ width: "20%", textAlign: "center", color: "rgb(0, 0, 0)", backgroundColor: "#72bbef" }}
-                        onClick={toggleRowsVisibility}>
+                        onClick={()=>toggleRowsVisibility("#72bbef")}>
                             <div><a style={{ fontWeight: 'bold' }}>4.2</a><br />1.22</div>
                         </th>
                         <th className={styles.globalTh} style={{ width: "20%", textAlign: "center", color: "rgb(0, 0, 0)", backgroundColor: "#faa9ba" }}
-                        onClick={toggleRowsVisibility}>
+                        onClick={()=>{toggleRowsVisibility("#de92a4")}}>
                             <div><a style={{ fontWeight: 'bold' }}>4.2</a><br />1.22</div>
                         </th>
                     </tr>
                 </thead>
             </table>
-            {isRowsVisible && <BetModal/>}
+            {isRowsVisible && <BetModal color={color}/>}
             <table className="table table-responsive">
                 <thead>
                     <tr className={styles.globalTh} style={{ border: "1px solid #000" }}>
@@ -86,17 +102,17 @@ const Bet1 = () => {
                             <div style={{ width: '60%', fontWeight: 'bold' }}><a>England</a><br /><a style={{ color: 'red' }}>→ 1.22</a></div>
                         </th>
                         <th className={styles.globalTh} style={{ width: "20%", textAlign: "center", color: "rgb(0, 0, 0)", backgroundColor: "#72bbef" }}
-                        onClick={toggleRowsVisibility2}>
+                        onClick={()=>toggleRowsVisibility2("#72bbef")}>
                             <div><a style={{ fontWeight: 'bold' }}>4.2</a><br />1.22</div>
                         </th>
                         <th className={styles.globalTh} style={{ width: "20%", textAlign: "center", color: "rgb(0, 0, 0)", backgroundColor: "#faa9ba" }}
-                        onClick={toggleRowsVisibility2}>
+                        onClick={()=>{toggleRowsVisibility2("#de92a4")}}>
                             <div><a style={{ fontWeight: 'bold' }}>4.2</a><br />1.22</div>
                         </th>
                     </tr>
                 </thead>
             </table>
-            {isRowsVisible2 && <BetModal/>}
+            {isRowsVisible2 && <BetModal color={color}/>}
             <table className="table table-responsive">
                 <thead>
                     <tr className={styles.globalTh} style={{ border: "1px solid #000" }}>
@@ -104,17 +120,17 @@ const Bet1 = () => {
                             <div style={{ width: '60%', fontWeight: 'bold' }}><a>England</a><br /><a style={{ color: 'red' }}>→ 1.22</a></div>
                         </th>
                         <th className={styles.globalTh} style={{ width: "20%", textAlign: "center", color: "rgb(0, 0, 0)", backgroundColor: "#72bbef" }}
-                        onClick={toggleRowsVisibility3}>
+                        onClick={()=>toggleRowsVisibility3("#72bbef")}>
                             <div><a style={{ fontWeight: 'bold' }}>4.2</a><br />1.22</div>
                         </th>
                         <th className={styles.globalTh} style={{ width: "20%", textAlign: "center", color: "rgb(0, 0, 0)", backgroundColor: "#faa9ba" }}
-                        onClick={toggleRowsVisibility3}>
+                        onClick={()=>{toggleRowsVisibility3("#de92a4")}}>
                             <div><a style={{ fontWeight: 'bold' }}>4.2</a><br />1.22</div>
                         </th>
                     </tr>
                 </thead>
             </table>
-            {isRowsVisible3 && <BetModal/>}
+            {isRowsVisible3 && <BetModal color={color}/>}
 
           
         </div>
