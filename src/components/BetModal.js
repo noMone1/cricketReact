@@ -4,6 +4,7 @@ const BetModal = (props) => {
   const {color} = props
   const [quantity, setQuantity] = useState(1);
   const [quantity2, setQuantity2] = useState(1);
+  const [betActive, setBetActive] = useState(false);
 
   const handleDecrease = (num) => {
     if(num===1){
@@ -30,13 +31,13 @@ const BetModal = (props) => {
       <div className="col-6">
         <div className="input-group input-group-lg mb-3 p-0" width="full">
             <button id="minusButton1" type="button" style={{background:"#827879"}} className="btn btn-light btn-lg"
-            onClick={()=>handleDecrease(1)} data-field="quantity1">
+            onClick={()=>handleDecrease(2)} data-field="quantity1">
               <i className="fa fa-minus" />
             </button>
           <input type="text" className="form-control input-number" name="quantity1" value={quantity}  min={0} step="0.01" style={{padding:"0"}} />
           
             <button id="plusButton1" type="button" style={{background:"#827879"}} className="btn btn-light btn-block" 
-            onClick={()=>handleIncrease(1)} data-field="quantity1">
+            onClick={()=>handleIncrease(2)} data-field="quantity1">
               <i className="fa fa-plus" />
             </button>
           
@@ -87,10 +88,10 @@ const BetModal = (props) => {
     </div>
     <div className="row p-1">
       <div className="col-6 d-flex justify-content-start">
-        <button id="cancelButton" type="button" className="btn btn-light btn-lg w-100">Cancel</button>
+        <button id="cancelButton" type="button" onClick={props.visibility} className="btn btn-light btn-lg w-100">Cancel</button>
       </div>
       <div className="col-6 d-flex justify-content-end">
-        <button type="button" className="btn btn-danger btn-lg w-100">Place Bet</button>
+        <button type="button" disabled={betActive?"true":"false"} className="btn btn-danger btn-lg w-100">Place Bet</button>
       </div>
     </div>
   </div>
