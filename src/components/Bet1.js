@@ -95,7 +95,7 @@ const Bet1 = () => {
                     </tr>
                 </thead>
             </table>
-            {isRowsVisible && <BetModal color={color}/>}
+            {isRowsVisible && <BetModal color={color} visibility={toggleRowsVisibility}/>}
             <table className="table table-responsive">
                 <thead>
                     <tr className={styles.globalTh} style={{ border: "1px solid #000" }}>
@@ -113,7 +113,7 @@ const Bet1 = () => {
                     </tr>
                 </thead>
             </table>
-            {isRowsVisible2 && <BetModal color={color}/>}
+            {isRowsVisible2 && <BetModal color={color} visibility={toggleRowsVisibility2}/>}
             <table className="table table-responsive">
                 <thead>
                     <tr className={styles.globalTh} style={{ border: "1px solid #000" }}>
@@ -131,7 +131,7 @@ const Bet1 = () => {
                     </tr>
                 </thead>
             </table>
-            {isRowsVisible3 && <BetModal color={color}/>}
+            {isRowsVisible3 && <BetModal color={color} visibility={toggleRowsVisibility3}/>}
 
           
         </div>
