@@ -20,6 +20,7 @@ const Bet1 = () => {
         setColor(color);
         if(isRowsVisible2===false){
             setIsRowsVisible3(false);
+            
             setIsRowsVisible(false);
         }
         setIsRowsVisible2(!isRowsVisible2);
