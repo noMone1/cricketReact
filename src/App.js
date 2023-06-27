@@ -7,11 +7,13 @@ import RightSection from './components/RightSection';
 import MiddleSection from './components/MiddleSection';
 function App() {
   return (
-    <div className="">
-      <Header />
+    <div className=""> 
+    <div style = {{position:'sticky',top:0,zIndex:1}}>
+        <Header />
+      </div>
       <div className="container-fluid">
         <div className="row">
-        <div className="col-lg-3 col-md-12 hide-on-mobile ">
+        <div className="col-lg-3 col-md-12 hide-on-mobile " >
           <h2>Left Section</h2>
           <p>This content is displayed in all screen sizes.</p>
         </div>

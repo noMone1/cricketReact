@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import styles from './globalCss.min.css'
 import BetModal from './BetModal'
 
-const Bet1 = () => {
+const Bet2 = () => {
     const [isRowsVisible, setIsRowsVisible] = useState(false);
     const [isRowsVisible2, setIsRowsVisible2] = useState(false);
     const [isRowsVisible3, setIsRowsVisible3] = useState(false);
@@ -36,42 +36,45 @@ const Bet1 = () => {
     return (
 
         <div >
-            <div style={{ padding: "5px", backgroundColor: "#bed5d8" ,height:"60%", width: "100%", overflowX: "auto", whiteSpace: "nowrap" }}>
-                <div style={{ height: "50%", display: "flex" }}>
-                    <div
-                        style={{ background: "#fc9900", padding: "10px", borderRadius: "50%", textAlign: "center", color: "rgb(0, 0, 0)", fontWeight: "600" }}>
-                        All </div>
-                    <div style={{ background: "black", padding: "10px", borderRadius: "50px", textAlign: "center", color: "white" }}>Series
-                        Winner 2023 </div>
-                    <div style={{ background: "black", padding: "10px", borderRadius: "50px", textAlign: "center", color: "white" }}>Series
-                        Winner 2023 (Bookmarker)</div>
-                    <div style={{ background: "black", padding: "10px", borderRadius: "50px", textAlign: "center", color: "white" }}>
-                        England common only 1 Win in 5 matches</div>
-                    <div style={{ background: "black", padding: "10px", borderRadius: "50px", textAlign: "center", color: "white" }}>Draw
-                        common only 1 Win in 5 matches</div>
-                </div>
-
-            </div>
+            
             <div style={{ display: "flex" }}>
-                <div
-                    style={{ background: "black", padding: "10px", borderTopRightRadius: "30px",width:"60%",fontSize: "14px" ,textAlign: "center", color: "white" }}>
-                    Series Winner 2023 <i className="fa fa-info-circle"></i></div>
-                <div style={{ textAlign: "right", padding: "10px", fontSize: "small", fontWeight: "500" }}>Matched <a
-                    style={{ fontWeight: "bold" }}>€ 509.7K </a></div>
-            </div>
+  <div
+    style={{
+      background: "black",
+      padding: "10px",
+      borderTopRightRadius: "30px",
+      textAlign: "center",
+      color: "white",
+      fontSize: "14px" // Adjust the font size as desired
+    }}
+  >
+    Series Winner 2023 (Bookmarker) <i className="fa fa-info-circle"></i>
+  </div>
+  <div
+    style={{
+      textAlign: "right",
+      padding: "10px",
+      fontSize: "small",
+      fontWeight: "500"
+    }}
+  >
+    Matched <a style={{ fontWeight: "bold" }}>€ 509.7K </a>
+  </div>
+</div>
 
-            <table className="table table-responsive">
+            
+            <table className="table table-responsive" style={{minHeight: "5px"}}>
                 <thead>
-                    <tr className={styles.globalTh} style={{ border: "1px solid #000" }}>
-                        <th className={styles.globalTh} style={{ height: "50%", width: "50%" }}>
-                            <div style={{ padding: "5px", backgroundColor: "#bed5d8", fontSize:"13px" }}>Min/Max 100-1000</div>
+                    <tr className={styles.globalTh} style={{ border: "1px solid #000" ,background:"#fff1c1"}}>
+                        <th className={styles.globalTh} style={{ height: "50%", width: "50%",background:"#fff1c1" }}>
+                            
                         </th>
                         <th className={styles.globalTh} style={{ width: "20%", textAlign: "center", 
-                        color: "rgb(0, 0, 0)", backgroundColor: "#72bbef" }} >
+                        color: "rgb(0, 0, 0)",background:"#fff1c1"  }} >
                         
                             <a style={{ fontWeight: "bold" }}>Back</a>
                         </th>
-                        <th className={styles.globalTh} style={{ width: "20%", textAlign: "center", color: "rgb(0, 0, 0)", backgroundColor: "#faa9ba" }}>
+                        <th className={styles.globalTh} style={{ width: "20%", textAlign: "center",background:"#fff1c1", color: "rgb(0, 0, 0)",  }}>
                             <a style={{ fontWeight: "bold" }}>Lay</a>
                         </th>
                     </tr>
@@ -81,7 +84,7 @@ const Bet1 = () => {
             <table className="table table-responsive">
                 <thead>
                     <tr className={styles.globalTh} style={{ border: "1px solid #000" }}>
-                        <th className={styles.globalTh} style={{ width: "50%" }}>
+                        <th className={styles.globalTh} style={{ width: "50%",background:"#fff1c1" }}>
                             <div style={{ width: '60%', fontWeight: 'bold' }}><a>England</a><br /><a style={{ color: 'red' }}>→ 1.22</a></div>
                         </th>
                         <th className={styles.globalTh} style={{ width: "20%", textAlign: "center", color: "rgb(0, 0, 0)", backgroundColor: "#72bbef" }}
@@ -99,7 +102,7 @@ const Bet1 = () => {
             <table className="table table-responsive">
                 <thead>
                     <tr className={styles.globalTh} style={{ border: "1px solid #000" }}>
-                        <th className={styles.globalTh} style={{ width: "50%" }}>
+                        <th className={styles.globalTh} style={{ width: "50%" ,background:"#fff1c1"}}>
                             <div style={{ width: '60%', fontWeight: 'bold' }}><a>England</a><br /><a style={{ color: 'red' }}>→ 1.22</a></div>
                         </th>
                         <th className={styles.globalTh} style={{ width: "20%", textAlign: "center", color: "rgb(0, 0, 0)", backgroundColor: "#72bbef" }}
@@ -117,7 +120,7 @@ const Bet1 = () => {
             <table className="table table-responsive">
                 <thead>
                     <tr className={styles.globalTh} style={{ border: "1px solid #000" }}>
-                        <th className={styles.globalTh} style={{ width: "50%" }}>
+                        <th className={styles.globalTh} style={{ width: "50%",background:"#fff1c1" }}>
                             <div style={{ width: '60%', fontWeight: 'bold' }}><a>England</a><br /><a style={{ color: 'red' }}>→ 1.22</a></div>
                         </th>
                         <th className={styles.globalTh} style={{ width: "20%", textAlign: "center", color: "rgb(0, 0, 0)", backgroundColor: "#72bbef" }}
@@ -140,4 +143,4 @@ const Bet1 = () => {
     )
 }
 
-export default Bet1
+export default Bet2
