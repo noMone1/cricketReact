@@ -6,7 +6,9 @@ const middleSection = () => {
   return (
     <>
         <Bet1/>
+        <br/>
         <Bet2/>
+        <br/>
         <Bet3/>
         </>
   )
