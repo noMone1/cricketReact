@@ -4,14 +4,16 @@ import Listing from './Listing/Listing';
 
 const MatchList = () => {
   return (
-    <div>
-      <div className="p-0">
+    <>
+       <div style={{ position: 'relative', zIndex: 0 }}>
         <Carousel />
       </div>
-      <div>
+
+      <div >
         <Listing />
       </div>
-    </div>
+    
+      </>
   );
 };
 
