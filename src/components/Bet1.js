@@ -1,12 +1,22 @@
 import React,{useState} from 'react'
 import styles from './globalCss.min.css'
 import BetModal from './BetModal'
+import { Spinner } from 'react-bootstrap';
 
-const Bet1 = () => {
+
+const Bet1 = ({section1Data,market}) => {   
+    // console.log("========",section1Data[0]?.runners[2])
     const [isRowsVisible, setIsRowsVisible] = useState(false);
     const [isRowsVisible2, setIsRowsVisible2] = useState(false);
     const [isRowsVisible3, setIsRowsVisible3] = useState(false);
     const [color, setColor] = useState("");
+
+    function convertToShortFormat(number) {
+        const suffixes = ['', 'k', 'M', 'B', 'T']; // Customize suffixes as needed
+        const suffixIndex = Math.floor(Math.log10(Math.abs(number)) / 3);
+        const shortNumber = (number / Math.pow(10, suffixIndex * 3)).toFixed(1);
+        return shortNumber + suffixes[suffixIndex];
+      }
 
     const toggleRowsVisibility = (color) => {
         setColor(color);
@@ -82,15 +92,17 @@ const Bet1 = () => {
                 <thead>
                     <tr className={styles.globalTh} style={{ border: "1px solid #000" }}>
                         <th className={styles.globalTh} style={{ width: "50%" }}>
-                            <div style={{ width: '60%', fontWeight: 'bold' }}><a>England</a><br /><a style={{ color: 'red' }}>→ 1.22</a></div>
+                            <div style={{ width: '60%', fontWeight: 'bold' }}><a>{market.Runners[0]?.RunnerName}</a><br /><a style={{ color: 'red' }}>→ 0.00</a></div>
                         </th>
                         <th className={styles.globalTh} style={{ width: "20%", textAlign: "center", color: "rgb(0, 0, 0)", backgroundColor: "#72bbef" }}
                         onClick={()=>toggleRowsVisibility("#72bbef")}>
-                            <div><a style={{ fontWeight: 'bold' }}>4.2</a><br />1.22</div>
+                            <div><a style={{ fontWeight: 'bold' }}>{section1Data[0]?.runners[0]?.ex?.availableToBack[0]?.price}</a><br />
+                           <a style={{ fontWeight: 'normal' }}> {convertToShortFormat(section1Data[0]?.runners[0]?.ex?.availableToBack[0]?.size)}</a></div>
                         </th>
                         <th className={styles.globalTh} style={{ width: "20%", textAlign: "center", color: "rgb(0, 0, 0)", backgroundColor: "#faa9ba" }}
                         onClick={()=>{toggleRowsVisibility("#de92a4")}}>
-                            <div><a style={{ fontWeight: 'bold' }}>4.2</a><br />1.22</div>
+                            <div><a style={{ fontWeight: 'bold' }}>{section1Data[0]?.runners[0]?.ex?.availableToLay[0]?.price}</a><br />
+                            <a style={{ fontWeight: 'normal' }}> {convertToShortFormat(section1Data[0]?.runners[0]?.ex?.availableToLay[0]?.size)}</a></div>
                         </th>
                     </tr>
                 </thead>
@@ -100,15 +112,17 @@ const Bet1 = () => {
                 <thead>
                     <tr className={styles.globalTh} style={{ border: "1px solid #000" }}>
                         <th className={styles.globalTh} style={{ width: "50%" }}>
-                            <div style={{ width: '60%', fontWeight: 'bold' }}><a>England</a><br /><a style={{ color: 'red' }}>→ 1.22</a></div>
+                            <div style={{ width: '60%', fontWeight: 'bold' }}><a>{market.Runners[1]?.RunnerName}</a><br /><a style={{ color: 'red' }}>→ 0.00</a></div>
                         </th>
                         <th className={styles.globalTh} style={{ width: "20%", textAlign: "center", color: "rgb(0, 0, 0)", backgroundColor: "#72bbef" }}
                         onClick={()=>toggleRowsVisibility2("#72bbef")}>
-                            <div><a style={{ fontWeight: 'bold' }}>4.2</a><br />1.22</div>
+                            <div><a style={{ fontWeight: 'bold' }}>{section1Data[0]?.runners[1]?.ex?.availableToBack[0]?.price}</a><br />
+                            <a style={{ fontWeight: 'normal' }}> {convertToShortFormat(section1Data[0]?.runners[1]?.ex?.availableToBack[0]?.size)}</a></div>
                         </th>
                         <th className={styles.globalTh} style={{ width: "20%", textAlign: "center", color: "rgb(0, 0, 0)", backgroundColor: "#faa9ba" }}
                         onClick={()=>{toggleRowsVisibility2("#de92a4")}}>
-                            <div><a style={{ fontWeight: 'bold' }}>4.2</a><br />1.22</div>
+                            <div><a style={{ fontWeight: 'bold' }}>{section1Data[0]?.runners[1]?.ex?.availableToLay[0]?.price}</a><br />
+                            <a style={{ fontWeight: 'normal' }}> {convertToShortFormat(section1Data[0]?.runners[1]?.ex?.availableToLay[0]?.size)}</a></div>
                         </th>
                     </tr>
                 </thead>
@@ -118,15 +132,17 @@ const Bet1 = () => {
                 <thead>
                     <tr className={styles.globalTh} style={{ border: "1px solid #000" }}>
                         <th className={styles.globalTh} style={{ width: "50%" }}>
-                            <div style={{ width: '60%', fontWeight: 'bold' }}><a>England</a><br /><a style={{ color: 'red' }}>→ 1.22</a></div>
+                            <div style={{ width: '60%', fontWeight: 'bold' }}><a>{market.Runners[2]?.RunnerName}</a><br /><a style={{ color: 'red' }}>→ 0.00</a></div>
                         </th>
                         <th className={styles.globalTh} style={{ width: "20%", textAlign: "center", color: "rgb(0, 0, 0)", backgroundColor: "#72bbef" }}
                         onClick={()=>toggleRowsVisibility3("#72bbef")}>
-                            <div><a style={{ fontWeight: 'bold' }}>4.2</a><br />1.22</div>
+                            <div><a style={{ fontWeight: 'bold' }}>{section1Data[0]?.runners[2]?.ex?.availableToBack[0]?.price}</a><br />
+                            <a style={{ fontWeight: 'normal' }}> {convertToShortFormat(section1Data[0]?.runners[2]?.ex?.availableToBack[0]?.size)}</a></div>
                         </th>
                         <th className={styles.globalTh} style={{ width: "20%", textAlign: "center", color: "rgb(0, 0, 0)", backgroundColor: "#faa9ba" }}
                         onClick={()=>{toggleRowsVisibility3("#de92a4")}}>
-                            <div><a style={{ fontWeight: 'bold' }}>4.2</a><br />1.22</div>
+                            <div><a style={{ fontWeight: 'bold' }}>{section1Data[0]?.runners[2]?.ex?.availableToLay[0]?.price}</a><br />
+                            <a style={{ fontWeight: 'normal' }}> {convertToShortFormat(section1Data[0]?.runners[1]?.ex?.availableToLay[0]?.size)}</a></div>
                         </th>
                     </tr>
                 </thead>

@@ -3,10 +3,9 @@ import { useNavigate } from 'react-router-dom';
 const config = require('../../config/config');
 const Listing = () => {
     const [data, setData] = useState([]);
+    // const [market, setMarket] = useState('');
     const navigate = useNavigate();
     const date = new Date();
-    console.log(date)
-
     const formatDate = (dateString) => {
         const options = { day: 'numeric', month: 'short', year: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
         const formattedDate = new Date(dateString).toLocaleString('en-US', options);
@@ -16,7 +15,7 @@ const Listing = () => {
         // Fetch data from the API
         const fetchData = async () => {
             try {
-                const response = await fetch('https://cricketbackend.onrender.com/matchList');
+                const response = await fetch('http://127.0.0.1:3200/matchList');
                 const data = await response.json();
                 setData(data); // Update the state with the fetched data
             } catch (error) {
@@ -27,8 +26,9 @@ const Listing = () => {
         fetchData();
     }, []);
 
-    const handleClick = () => {
-        navigate('/match');
+    const handleClick = (market,item) => {
+        
+        navigate('/match/'+market,{ state: item });
     };
 
     return (
@@ -38,7 +38,7 @@ const Listing = () => {
                 {data.map((item, index) => (
                     <li className="list-group-item" key={index} >
                         <div className="row align-items-center">
-                            <div className="col-6" onClick={handleClick}>
+                            <div className="col-6" onClick={()=>{handleClick(item.MarketId,item)}}>
                                 <a style={{ color: '#347aeb', fontSize: '16px' }}>{item.EventName}</a>
                             </div>
                             <div className="col-3">

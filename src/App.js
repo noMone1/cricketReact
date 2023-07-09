@@ -9,6 +9,7 @@ import MiddleSection from './components/MiddleSection';
 import MatchList from './components/MatchList';
 
 function App() {
+  
   return (
     <div className=""> 
     <div style = {{position:'sticky',top:0,zIndex:1}}>
@@ -35,7 +36,7 @@ function App() {
             <Router>
             <Routes>
                 <Route path="/"  element={<MatchList/>} /> {/* Home component */}
-                <Route path="/match" element={<MiddleSection/>} /> {/* About component */}
+                <Route path="/match/:id" element={<MiddleSection/>} /> {/* About component */}
                 {/* <Route path="/contact" component={Contact} /> */}
                 {/* Add more routes as needed */}
                 </Routes>
