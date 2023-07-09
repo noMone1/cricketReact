@@ -14,11 +14,21 @@ function App() {
     <div style = {{position:'sticky',top:0,zIndex:1}}>
         <Header />
       </div>
+      <ul class="list-group p-0" style={{background:"orange"}} >
+        <div style={{display:"flex"}} >
+         <li class="list-group-item" style={{background:"orange",color:"white"}} ><b>Home</b></li>
+         <li class="list-group-item" style={{background:"orange"}} ><b>In- Play</b></li>
+         <li class="list-group-item" style={{background:"orange"}} ><b>Multi Market</b></li>
+         </div>
+         </ul>
       <div className="container-fluid">
         <div className="row">
         <div className="col-lg-3 col-md-12 hide-on-mobile "  >
-          <h2>Left Section</h2>
-          <p>This content is displayed in all screen sizes.</p>
+        <ul class="list-group"><li class="list-group-item" style={{background:"#480760"}}><h2 style={{color:"white"}}>Sports</h2></li></ul>
+         
+          <ul class="list-group">
+          <li class="list-group-item">Cricket</li>
+          </ul>
         </div>
           <div className="col-lg-6 col-md-12 scrollable-content p-0 ">
             <div className="container ">
