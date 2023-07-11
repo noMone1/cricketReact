@@ -1,54 +1,58 @@
-import React from 'react'
-import Bet1 from './Bet1'
-import Bet2 from './Bet2'
-import Bet3 from './Bet3'
-import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams, useLocation } from 'react-router-dom';
 import io from 'socket.io-client';
-import { useState } from 'react';
-import Spinner from '../components/Spinner/Spinner'
+import Spinner from '../components/Spinner/Spinner';
+import Bet1 from './Bet1';
 
-import { useLocation } from 'react-router-dom';
 const MiddleSection = () => {
-  const [section1Data, setSection1Data] = useState([])
-  const [datafetched, setDataFetched] = useState(false)
-  const [market, setMarket] = useState({})
+  const [section1Data, setSection1Data] = useState([]);
+  const [dataFetched, setDataFetched] = useState(false);
   const { id } = useParams();
   const location = useLocation();
-  const  item  = location.state;
-  console.log("==========",item)
-  useEffect(() => {
-    // fetch(`http://127.0.0.1:3200/market/${id}`)
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     console.log(data);
-    //   })
-    //   .catch(error => {
-    //     console.error(error);
-    //   });
+  const item = location.state;
 
-      const socket = io('http://localhost:3200');
-      socket.emit('init', {id:id});
-    
-      socket.on(`matchOdds${id}`,(data)=>{
-        setDataFetched(true)
-        setSection1Data(data)
-        // console.log(data)
-      })
-      
-    },[])
-    
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`http://192.168.249.123:3200/market/${id}`);
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+
+    const socket = io('http://192.168.249.123:3200');
+    socket.emit('init', { id: id });
+
+    const handleMatchOddsData = (data) => {
+      console.log(data);
+      setDataFetched(true);
+      setSection1Data(data);
+    };
+
+    const handleDisconnect = () => {
+      console.log('Socket disconnected');
+      socket.disconnect();
+    };
+
+    socket.on(`matchOdds${id}`, handleMatchOddsData);
+    socket.on('disconnect', handleDisconnect);
+
+    return () => {
+      socket.off(`matchOdds${id}`, handleMatchOddsData);
+      socket.off('disconnect', handleDisconnect);
+      socket.disconnect();
+    };
+  }, [id]);
+
   return (
     <>
-      {datafetched && <Bet1 section1Data={section1Data} market ={item}/>}
-      {!datafetched && <Spinner/>}
-        {/* <Bet1 section1Data={section1Data} market ={item}/> */}
-        {/* <br/>
-        <Bet2/>
-        <br/>
-        <Bet3/> */}
-        </>
-  )
-}
+      {dataFetched ? <Bet1 section1Data={section1Data} market={item} /> : <Spinner />}
+    </>
+  );
+};
 
-export default MiddleSection
+export default MiddleSection;

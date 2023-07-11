@@ -6,53 +6,49 @@ import image4 from './imagesw.jpg'
 
 function CarouselFadeExample() {
   return (
-    <Carousel fade>
+    <Carousel fade controls={false} indicators={false}>
       <Carousel.Item>
-        <img height="150"
+        <img
+          height="150"
           className="d-block w-100"
           src={imag3}
           alt="First slide"
         />
         <Carousel.Caption>
-          {/* <h3>First slide label</h3> */}
-          {/* <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
+          {/* Caption content */}
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <img height="150"
+        <img
+          height="150"
           className="d-block w-100"
           src={image4}
-          alt="First slide"
+          alt="Second slide"
         />
         <Carousel.Caption>
-          {/* <h3>First slide label</h3> */}
-          {/* <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
+          {/* Caption content */}
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-      <img height="150"
+        <img
+          height="150"
           className="d-block w-100"
           src={imag2}
-          alt="First slide"
+          alt="Third slide"
         />
-
         <Carousel.Caption>
-          {/* <h3>Second slide label</h3> */}
-          {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
+          {/* Caption content */}
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-      <img height="150"
+        <img
+          height="150"
           className="d-block w-100"
           src={img}
-          alt="First slide"
+          alt="Fourth slide"
         />
-
         <Carousel.Caption>
-          {/* <h3>Third slide label</h3> */}
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
+          {/* Caption content */}
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

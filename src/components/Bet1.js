@@ -5,6 +5,7 @@ import { Spinner } from 'react-bootstrap';
 
 
 const Bet1 = ({section1Data,market}) => {   
+    console.log(market)
     // console.log("========",section1Data[0]?.runners[2])
     const [isRowsVisible, setIsRowsVisible] = useState(false);
     const [isRowsVisible2, setIsRowsVisible2] = useState(false);
@@ -12,6 +13,9 @@ const Bet1 = ({section1Data,market}) => {
     const [color, setColor] = useState("");
 
     function convertToShortFormat(number) {
+        if(!number){
+            return ''
+        }
         const suffixes = ['', 'k', 'M', 'B', 'T']; // Customize suffixes as needed
         const suffixIndex = Math.floor(Math.log10(Math.abs(number)) / 3);
         const shortNumber = (number / Math.pow(10, suffixIndex * 3)).toFixed(1);
@@ -46,6 +50,7 @@ const Bet1 = ({section1Data,market}) => {
     return (
 
         <div >
+            
             <div style={{ padding: "5px", backgroundColor: "#bed5d8" ,height:"60%", width: "100%", overflowX: "auto", whiteSpace: "nowrap" }}>
                 <div style={{ height: "50%", display: "flex" }}>
                     <div
@@ -87,7 +92,12 @@ const Bet1 = ({section1Data,market}) => {
                     </tr>
                 </thead>
             </table>
-           
+            
+            <div className="position-relative">
+                {(section1Data ||!market.Runners[0]?.RunnerName) &&
+    <div className="position-absolute w-100 h-100 d-flex align-items-center justify-content-center bg-dark opacity-75">
+       <span className=" font-weight-bold" style={{ color: 'red' }}><b>Suspended</b></span>
+    </div>}
             <table className="table table-responsive">
                 <thead>
                     <tr className={styles.globalTh} style={{ border: "1px solid #000" }}>
@@ -107,6 +117,12 @@ const Bet1 = ({section1Data,market}) => {
                     </tr>
                 </thead>
             </table>
+            </div>
+            <div className="position-relative">
+                { (section1Data ||!market.Runners[1]?.RunnerName) &&
+    <div className="position-absolute w-100 h-100 d-flex align-items-center justify-content-center bg-dark opacity-75">
+       <span className=" font-weight-bold" style={{ color: 'red' }}><b>Suspended</b></span>
+    </div>}
             {isRowsVisible && <BetModal color={color} visibility={toggleRowsVisibility}/>}
             <table className="table table-responsive">
                 <thead>
@@ -127,12 +143,18 @@ const Bet1 = ({section1Data,market}) => {
                     </tr>
                 </thead>
             </table>
+            </div>
+            <div className="position-relative">
+                {(section1Data || !market.Runners[2]?.RunnerName) &&
+    <div className="position-absolute w-100 h-100 d-flex align-items-center justify-content-center bg-dark opacity-75">
+       <span className=" font-weight-bold" style={{ color: 'red' }}><b>Suspended</b></span>
+    </div>}
             {isRowsVisible2 && <BetModal color={color} visibility={toggleRowsVisibility2}/>}
             <table className="table table-responsive">
                 <thead>
                     <tr className={styles.globalTh} style={{ border: "1px solid #000" }}>
                         <th className={styles.globalTh} style={{ width: "50%" }}>
-                            <div style={{ width: '60%', fontWeight: 'bold' }}><a>{market.Runners[2]?.RunnerName}</a><br /><a style={{ color: 'red' }}>→ 0.00</a></div>
+                            <div style={{ width: '60%', fontWeight: 'bold' }}><a>{market.Runners[2]?.RunnerName || "Not Available"}</a><br /><a style={{ color: 'red' }}>→ 0.00</a></div>
                         </th>
                         <th className={styles.globalTh} style={{ width: "20%", textAlign: "center", color: "rgb(0, 0, 0)", backgroundColor: "#72bbef" }}
                         onClick={()=>toggleRowsVisibility3("#72bbef")}>
@@ -142,12 +164,13 @@ const Bet1 = ({section1Data,market}) => {
                         <th className={styles.globalTh} style={{ width: "20%", textAlign: "center", color: "rgb(0, 0, 0)", backgroundColor: "#faa9ba" }}
                         onClick={()=>{toggleRowsVisibility3("#de92a4")}}>
                             <div><a style={{ fontWeight: 'bold' }}>{section1Data[0]?.runners[2]?.ex?.availableToLay[0]?.price}</a><br />
-                            <a style={{ fontWeight: 'normal' }}> {convertToShortFormat(section1Data[0]?.runners[1]?.ex?.availableToLay[0]?.size)}</a></div>
+                            <a style={{ fontWeight: 'normal' }}> {convertToShortFormat(section1Data[0]?.runners[2]?.ex?.availableToLay[0]?.size)}</a></div>
                         </th>
                     </tr>
                 </thead>
             </table>
             {isRowsVisible3 && <BetModal color={color} visibility={toggleRowsVisibility3}/>}
+            </div>
 
           
         </div>
