@@ -3,6 +3,9 @@ import { useParams, useLocation } from 'react-router-dom';
 import io from 'socket.io-client';
 import Spinner from '../components/Spinner/Spinner';
 import Bet1 from './Bet1';
+import Bet2 from './Bet2'
+import Bet3 from './Bet3'
+import Footer from './Footer/Footer';
 
 const MiddleSection = () => {
   const [section1Data, setSection1Data] = useState([]);
@@ -51,6 +54,9 @@ const MiddleSection = () => {
   return (
     <>
       {dataFetched ? <Bet1 section1Data={section1Data} market={item} /> : <Spinner />}
+      {dataFetched ? <Bet2 section1Data={section1Data} market={item} /> : <Spinner />}
+      {dataFetched ? <Bet3 section1Data={section1Data} market={item} /> : <Spinner />}
+      <Footer/>
     </>
   );
 };

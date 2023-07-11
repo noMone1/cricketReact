@@ -7,6 +7,7 @@ import LeftSection from './components/LeftSection';
 import RightSection from './components/RightSection';
 import MiddleSection from './components/MiddleSection';
 import MatchList from './components/MatchList';
+import Footer from './components/Footer/Footer';
 
 function App() {
   
@@ -41,7 +42,7 @@ function App() {
                 {/* Add more routes as needed */}
                 </Routes>
               </Router>
-
+            
             </div>
           </div>
           <RightSection />
