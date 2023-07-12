@@ -21,7 +21,7 @@ const MiddleSection = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://127.0.0.1:3200/market/${id}`);
+        const response = await fetch(`https://cricketbackend.onrender.com/market/${id}`);
         const data = await response.json();
         // console.log(data);
       } catch (error) {
@@ -31,7 +31,7 @@ const MiddleSection = () => {
 
     fetchData();
 
-    const socket = io('http://127.0.0.1:3200');
+    const socket = io('https://cricketbackend.onrender.com/');
     socket.emit('init', { id: id });
 
     const handleMatchOddsData = (data) => {
