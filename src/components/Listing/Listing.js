@@ -15,7 +15,7 @@ const Listing = () => {
         // Fetch data from the API
         const fetchData = async () => {
             try {
-                const response = await fetch('http://192.168.249.123:3200/matchList');
+                const response = await fetch('http://127.0.0.1:3200/matchList');
                 const data = await response.json();
                 setData(data); // Update the state with the fetched data
             } catch (error) {

@@ -5,16 +5,15 @@ import { Spinner } from 'react-bootstrap';
 
 
 const Bet1 = ({section1Data,market}) => {   
-    console.log(market)
-    // console.log("========",section1Data[0]?.runners[2])
+        // console.log(section1Data)
     const [isRowsVisible, setIsRowsVisible] = useState(false);
     const [isRowsVisible2, setIsRowsVisible2] = useState(false);
     const [isRowsVisible3, setIsRowsVisible3] = useState(false);
     const [color, setColor] = useState("");
 
     function convertToShortFormat(number) {
-        if(!number){
-            return ''
+        if(number===undefined || number===0 || typeof number !== "number"){
+            return 0
         }
         const suffixes = ['', 'k', 'M', 'B', 'T']; // Customize suffixes as needed
         const suffixIndex = Math.floor(Math.log10(Math.abs(number)) / 3);
@@ -94,7 +93,7 @@ const Bet1 = ({section1Data,market}) => {
             </table>
             
             <div className="position-relative">
-                {(section1Data ||!market.Runners[0]?.RunnerName) &&
+                {(section1Data?.length===0 ||!market.Runners[0]?.RunnerName || section1Data[0]?.runners.status==='SUSPENDED') &&
     <div className="position-absolute w-100 h-100 d-flex align-items-center justify-content-center bg-dark opacity-75">
        <span className=" font-weight-bold" style={{ color: 'red' }}><b>Suspended</b></span>
     </div>}
@@ -106,12 +105,12 @@ const Bet1 = ({section1Data,market}) => {
                         </th>
                         <th className={styles.globalTh} style={{ width: "20%", textAlign: "center", color: "rgb(0, 0, 0)", backgroundColor: "#72bbef" }}
                         onClick={()=>toggleRowsVisibility("#72bbef")}>
-                            <div><a style={{ fontWeight: 'bold' }}>{section1Data[0]?.runners[0]?.ex?.availableToBack[0]?.price}</a><br />
+                            <div><a style={{ fontWeight: 'bold' }}>{section1Data[0]?.runners[0]?.ex?.availableToBack[0]?.price || 0}</a><br />
                            <a style={{ fontWeight: 'normal' }}> {convertToShortFormat(section1Data[0]?.runners[0]?.ex?.availableToBack[0]?.size)}</a></div>
                         </th>
                         <th className={styles.globalTh} style={{ width: "20%", textAlign: "center", color: "rgb(0, 0, 0)", backgroundColor: "#faa9ba" }}
                         onClick={()=>{toggleRowsVisibility("#de92a4")}}>
-                            <div><a style={{ fontWeight: 'bold' }}>{section1Data[0]?.runners[0]?.ex?.availableToLay[0]?.price}</a><br />
+                            <div><a style={{ fontWeight: 'bold' }}>{section1Data[0]?.runners[0]?.ex?.availableToLay[0]?.price || 0}</a><br />
                             <a style={{ fontWeight: 'normal' }}> {convertToShortFormat(section1Data[0]?.runners[0]?.ex?.availableToLay[0]?.size)}</a></div>
                         </th>
                     </tr>
@@ -119,7 +118,7 @@ const Bet1 = ({section1Data,market}) => {
             </table>
             </div>
             <div className="position-relative">
-                { (section1Data ||!market.Runners[1]?.RunnerName) &&
+                { (section1Data?.length===0 ||!market.Runners[1]?.RunnerName ||section1Data[0]?.runners.status==='SUSPENDED') &&
     <div className="position-absolute w-100 h-100 d-flex align-items-center justify-content-center bg-dark opacity-75">
        <span className=" font-weight-bold" style={{ color: 'red' }}><b>Suspended</b></span>
     </div>}
@@ -132,12 +131,12 @@ const Bet1 = ({section1Data,market}) => {
                         </th>
                         <th className={styles.globalTh} style={{ width: "20%", textAlign: "center", color: "rgb(0, 0, 0)", backgroundColor: "#72bbef" }}
                         onClick={()=>toggleRowsVisibility2("#72bbef")}>
-                            <div><a style={{ fontWeight: 'bold' }}>{section1Data[0]?.runners[1]?.ex?.availableToBack[0]?.price}</a><br />
+                            <div><a style={{ fontWeight: 'bold' }}>{section1Data[0]?.runners[1]?.ex?.availableToBack[0]?.price || 0}</a><br />
                             <a style={{ fontWeight: 'normal' }}> {convertToShortFormat(section1Data[0]?.runners[1]?.ex?.availableToBack[0]?.size)}</a></div>
                         </th>
                         <th className={styles.globalTh} style={{ width: "20%", textAlign: "center", color: "rgb(0, 0, 0)", backgroundColor: "#faa9ba" }}
                         onClick={()=>{toggleRowsVisibility2("#de92a4")}}>
-                            <div><a style={{ fontWeight: 'bold' }}>{section1Data[0]?.runners[1]?.ex?.availableToLay[0]?.price}</a><br />
+                            <div><a style={{ fontWeight: 'bold' }}>{section1Data[0]?.runners[1]?.ex?.availableToLay[0]?.price || 0}</a><br />
                             <a style={{ fontWeight: 'normal' }}> {convertToShortFormat(section1Data[0]?.runners[1]?.ex?.availableToLay[0]?.size)}</a></div>
                         </th>
                     </tr>
@@ -145,7 +144,7 @@ const Bet1 = ({section1Data,market}) => {
             </table>
             </div>
             <div className="position-relative">
-                {(section1Data || !market.Runners[2]?.RunnerName) &&
+                {(section1Data?.length===0|| !market.Runners[2]?.RunnerName || section1Data[0]?.runners.status==='SUSPENDED') &&
     <div className="position-absolute w-100 h-100 d-flex align-items-center justify-content-center bg-dark opacity-75">
        <span className=" font-weight-bold" style={{ color: 'red' }}><b>Suspended</b></span>
     </div>}
@@ -158,12 +157,12 @@ const Bet1 = ({section1Data,market}) => {
                         </th>
                         <th className={styles.globalTh} style={{ width: "20%", textAlign: "center", color: "rgb(0, 0, 0)", backgroundColor: "#72bbef" }}
                         onClick={()=>toggleRowsVisibility3("#72bbef")}>
-                            <div><a style={{ fontWeight: 'bold' }}>{section1Data[0]?.runners[2]?.ex?.availableToBack[0]?.price}</a><br />
+                            <div><a style={{ fontWeight: 'bold' }}>{section1Data[0]?.runners[2]?.ex?.availableToBack[0]?.price ||0}</a><br />
                             <a style={{ fontWeight: 'normal' }}> {convertToShortFormat(section1Data[0]?.runners[2]?.ex?.availableToBack[0]?.size)}</a></div>
                         </th>
                         <th className={styles.globalTh} style={{ width: "20%", textAlign: "center", color: "rgb(0, 0, 0)", backgroundColor: "#faa9ba" }}
                         onClick={()=>{toggleRowsVisibility3("#de92a4")}}>
-                            <div><a style={{ fontWeight: 'bold' }}>{section1Data[0]?.runners[2]?.ex?.availableToLay[0]?.price}</a><br />
+                            <div><a style={{ fontWeight: 'bold' }}>{section1Data[0]?.runners[2]?.ex?.availableToLay[0]?.price ||0}</a><br />
                             <a style={{ fontWeight: 'normal' }}> {convertToShortFormat(section1Data[0]?.runners[2]?.ex?.availableToLay[0]?.size)}</a></div>
                         </th>
                     </tr>

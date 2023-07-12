@@ -10,6 +10,10 @@ import Footer from './Footer/Footer';
 const MiddleSection = () => {
   const [section1Data, setSection1Data] = useState([]);
   const [dataFetched, setDataFetched] = useState(false);
+  const [section2Data, setSection2Data] = useState([]);
+  const [dataFetched2, setDataFetched2] = useState(false);
+  const [section3Data, setSection3Data] = useState([]);
+  const [dataFetched3, setDataFetched3] = useState(false);
   const { id } = useParams();
   const location = useLocation();
   const item = location.state;
@@ -17,9 +21,9 @@ const MiddleSection = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://192.168.249.123:3200/market/${id}`);
+        const response = await fetch(`http://127.0.0.1:3200/market/${id}`);
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
       } catch (error) {
         console.error(error);
       }
@@ -27,21 +31,33 @@ const MiddleSection = () => {
 
     fetchData();
 
-    const socket = io('http://192.168.249.123:3200');
+    const socket = io('http://127.0.0.1:3200');
     socket.emit('init', { id: id });
 
     const handleMatchOddsData = (data) => {
-      console.log(data);
+      // console.log(data);
       setDataFetched(true);
       setSection1Data(data);
     };
+    const handleMatchBookmarkerData = (data) => {
+      // console.log(data);
+      setDataFetched2(true);
+      setSection2Data(data);
+    };
+    const handleSessionData = (data) => {
+      // console.log(data);
+      setDataFetched3(true);
+      setSection3Data(data);
+    };
 
     const handleDisconnect = () => {
-      console.log('Socket disconnected');
+      // console.log('Socket disconnected');
       socket.disconnect();
     };
 
     socket.on(`matchOdds${id}`, handleMatchOddsData);
+    socket.on(`bookmaker${id}`, handleMatchBookmarkerData);
+    socket.on(`session${id}`, handleSessionData);
     socket.on('disconnect', handleDisconnect);
 
     return () => {
@@ -54,8 +70,8 @@ const MiddleSection = () => {
   return (
     <>
       {dataFetched ? <Bet1 section1Data={section1Data} market={item} /> : <Spinner />}
-      {dataFetched ? <Bet2 section1Data={section1Data} market={item} /> : <Spinner />}
-      {dataFetched ? <Bet3 section1Data={section1Data} market={item} /> : <Spinner />}
+      {dataFetched2 ? <Bet2 section2Data={section2Data} market={item} /> : <Spinner />}
+      {/* {dataFetched ? <Bet3 section1Data={section3Data} market={item} /> : <Spinner />} */}
       <Footer/>
     </>
   );
