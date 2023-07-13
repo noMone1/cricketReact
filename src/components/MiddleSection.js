@@ -6,6 +6,7 @@ import Bet1 from './Bet1';
 import Bet2 from './Bet2'
 import Bet3 from './Bet3'
 import Footer from './Footer/Footer';
+import config from '../config/config'
 
 const MiddleSection = () => {
   const [section1Data, setSection1Data] = useState([]);
@@ -21,7 +22,7 @@ const MiddleSection = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://cricketbackend.onrender.com/market/${id}`);
+        const response = await fetch(`${config.BASE_URL}market/${id}`);
         const data = await response.json();
         // console.log(data);
       } catch (error) {
@@ -31,7 +32,7 @@ const MiddleSection = () => {
 
     fetchData();
 
-    const socket = io('https://cricketbackend.onrender.com/');
+    const socket = io(config.BASE_URL);
     socket.emit('init', { id: id });
 
     const handleMatchOddsData = (data) => {

@@ -1,6 +1,6 @@
 import React,{ useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-const config = require('../../config/config');
+import config from '../../config/config'
 const Listing = () => {
     const [data, setData] = useState([]);
     // const [market, setMarket] = useState('');
@@ -15,7 +15,7 @@ const Listing = () => {
         // Fetch data from the API
         const fetchData = async () => {
             try {
-                const response = await fetch('https://cricketbackend.onrender.com/matchList');
+                const response = await fetch(config.BASE_URL+'matchList');
                 const data = await response.json();
                 setData(data); // Update the state with the fetched data
             } catch (error) {

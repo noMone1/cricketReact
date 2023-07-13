@@ -7,9 +7,10 @@ import LeftSection from './components/LeftSection';
 import RightSection from './components/RightSection';
 import MiddleSection from './components/MiddleSection';
 import MatchList from './components/MatchList';
-import Footer from './components/Footer/Footer';
+import Tables from './components/Tables/Tables';
 
-function App() {
+
+function UserView() {
   
   return (
     <div className=""> 
@@ -37,12 +38,10 @@ function App() {
             <Router>
             <Routes>
                 <Route path="/"  element={<MatchList/>} /> {/* Home component */}
+                <Route path="/admin"  element={<Tables/>} /> {/* Home component */}
                 <Route path="/match/:id" element={<MiddleSection/>} /> {/* About component */}
-                {/* <Route path="/contact" component={Contact} /> */}
-                {/* Add more routes as needed */}
                 </Routes>
-              </Router>
-            
+                </Router>
             </div>
           </div>
           <RightSection />
@@ -52,4 +51,4 @@ function App() {
   );
 }
 
-export default App;
+export default UserView;
