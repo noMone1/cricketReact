@@ -10,10 +10,11 @@ import MatchList from './components/MatchList';
 import Tables from './components/Tables/Tables';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { atom, useAtom } from 'jotai';
+import {loginVisible} from './Atoms/Globals'
 
 function UserView() {
-  
+
   return (
     <div className=""> 
     <ToastContainer />

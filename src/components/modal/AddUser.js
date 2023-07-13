@@ -3,8 +3,10 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { toast } from "react-toastify";
 import config from '../../config/config'
-function AddUser({ showModal, handleOpenModal, item }) {
+import { useNavigate } from 'react-router-dom';
+function AddUser({ showModal, handleOpenModal, item,updateChanged }) {
   item = item ? item : {};
+  
   var method = "POST";
   const saveData = async () => {
     try {
@@ -35,11 +37,14 @@ function AddUser({ showModal, handleOpenModal, item }) {
       if (response.ok) {
         const data1 = await response.json();
         handleOpenModal();
+        updateChanged();
         toast.success(data1.message);
+        
       } else if (response.status === 400) {
         const data1 = await response.json();
-        console.log(data1.message);
         toast.warning(data1.message);
+        // handleOpenModal();
+        // updateChanged();
       }
     } catch (err) {
       toast.error("something went wrong");
@@ -62,7 +67,7 @@ function AddUser({ showModal, handleOpenModal, item }) {
         <Modal.Body>
           <form id="userForm" onSubmit={saveData}>
             <div className="modal-body">
-              <div className="form-group">
+              <div className="form-group ">
                 <label>Name</label>
                 <input
                   type="text"
@@ -75,7 +80,7 @@ function AddUser({ showModal, handleOpenModal, item }) {
                 />
               </div>
               <div className="form-row">
-                <div className="form-group col-md-6">
+                <div className="form-group ">
                   <label>Email</label>
                   <input
                     type="email"
@@ -87,7 +92,7 @@ function AddUser({ showModal, handleOpenModal, item }) {
                     defaultValue={item.email}
                   />
                 </div>
-                <div className="form-group col-md-6">
+                <div className="form-group ">
                   <label>Phone</label>
                   <input
                     type="text"
@@ -101,7 +106,7 @@ function AddUser({ showModal, handleOpenModal, item }) {
                 </div>
               </div>
               <div className="form-row">
-                <div className="form-group col-md-6">
+                <div className="form-group ">
                   <label>Wallet</label>
                   <input
                     type="text"
@@ -116,7 +121,7 @@ function AddUser({ showModal, handleOpenModal, item }) {
               </div>
               <div className="form-row">
                 {!item.password && (
-                  <div className="form-group col-md-6">
+                  <div className="form-group ">
                     <label>Password</label>
                     <input
                       type="text"
