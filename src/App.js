@@ -8,12 +8,15 @@ import RightSection from './components/RightSection';
 import MiddleSection from './components/MiddleSection';
 import MatchList from './components/MatchList';
 import Tables from './components/Tables/Tables';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function UserView() {
   
   return (
     <div className=""> 
+    <ToastContainer />
     <div style = {{position:'sticky',top:0,zIndex:1}}>
         <Header />
       </div>
