@@ -27,8 +27,7 @@ function AddUser({ showModal, handleOpenModal, item,updateChanged }) {
           method: method,
           headers: {
             "Content-Type": "application/json",
-            access_token: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDhhZGYxMzhlYjdkZDY4NGRmZDNmYTEiLCJlbWFpbCI6InNhbXBsZUB5b3BtYWlsLmNvbSIsImNvbXBhbnlfaWQiOiIyNjYiLCJyb2xlIjoidXNlciIsIm91ckhybXNGbGFnIjp0cnVlLCJpYXQiOjE2ODkxMzg3NDQsImV4cCI6MTY4OTMxMTU0NH0.BEiU2xYaroYtvX5lc3Tw2sCvdeu50gd9r35ryMUavEQ
-          `,
+            access_token: localStorage.getItem("access_token"),
           },
           body: JSON.stringify(userObject),
         }

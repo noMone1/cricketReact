@@ -12,6 +12,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { atom, useAtom } from 'jotai';
 import {loginVisible} from './Atoms/Globals'
+import LoginAdmin from './components/modal/LoginAdmin'
 
 function UserView() {
 
@@ -42,7 +43,8 @@ function UserView() {
             <Router>
             <Routes>
                 <Route path="/"  element={<MatchList/>} /> {/* Home component */}
-                <Route path="/admin"  element={<Tables/>} /> {/* Home component */}
+                <Route path="/admin"  element={<LoginAdmin/>} /> {/* Home component */}
+                <Route path="/admin/list"  element={<Tables/>} /> {/* Home component */}
                 <Route path="/match/:id" element={<MiddleSection/>} /> {/* About component */}
                 </Routes>
                 </Router>

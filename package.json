@@ -9,6 +9,7 @@
     "bootstrap": "^5.3.0",
     "fetch": "^1.1.0",
     "jotai": "^2.2.2",
+    "json": "^11.0.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0",
     "react-dom": "^18.2.0",
@@ -19,7 +20,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start --host 192.168.78.123",
+    "start": "react-scripts start --host 192.168.78.227",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

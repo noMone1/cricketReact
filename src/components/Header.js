@@ -4,6 +4,7 @@ import Modal from './modal/Modal'
 import { useState } from 'react';
 import { useAtom } from 'jotai';
 import { loginVisible } from '../Atoms/Globals';
+import NavDropdown from './NavDropDown/NavDropDown'
 const Header = () => {
   const [login,setLogin] = useAtom(loginVisible)
   const [showModal, setShowModal] = useState(false);
@@ -20,18 +21,22 @@ const Header = () => {
         <img src={logo} alt="Logo"/>
         <span style={{color:"red"}}>EAGLE 75</span>
       </a>
-      { login && <button className="navbar-toggler" type="button" aria-controls="navbarNav" aria-expanded="false"
+       <button className="navbar-toggler" type="button" aria-controls="navbarNav" aria-expanded="false"
         aria-label="Toggle navigation">
-        <a className="btn btn-danger" onClick={handleOpenModal}>LOGIN <i className="fa fa-sign-in"></i></a>
-      </button>}
+       {login && <a className="btn btn-danger" onClick={handleOpenModal}>LOGIN <i className="fa fa-sign-in"></i></a>}
+       {!login && <NavDropdown/>}
+      </button>
+      
+      
       {login &&<div className="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item">
-            
             <a className="btn btn-danger" onClick={handleOpenModal}>LOGIN <i className="fa fa-sign-in"></i></a>
           </li>
         </ul>
       </div>}
+      {!login &&<div className="collapse navbar-collapse justify-content-end" id="navbarNav"><NavDropdown/></div>}
+      
       
     </nav>
     

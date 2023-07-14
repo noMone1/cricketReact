@@ -6,8 +6,10 @@ import config from '../../config/config'
 import Spinner from '../Spinner/Spinner'
 import { loginVisible } from '../../Atoms/Globals';
 import { useAtom } from 'jotai';
+import { useNavigate } from 'react-router-dom';
 
 function Example({ showModal, handleOpenModal }) {
+    const navigate = useNavigate();
   const [login,setLogin] = useAtom(loginVisible)
   const [res,setRes] = useState(false)
   const saveData = async () => {
@@ -24,7 +26,7 @@ function Example({ showModal, handleOpenModal }) {
         head = `/login`;
       }
       var response = await fetch(
-        config.BASE_URL+"api/tenant/users" + head,
+        config.BASE_URL+"api/auth" + head,
         {
           method: "POST",
           headers: {
@@ -40,8 +42,11 @@ function Example({ showModal, handleOpenModal }) {
         const data1 = await response.json();
         localStorage.setItem("access_token", data1.accessToken);
         localStorage.setItem("user", JSON.stringify(data1.user));
-        handleOpenModal();
+        localStorage.setItem("isAdmin",true);
+        // handleOpenModal();
+
         toast.success("Logged in successfully!");
+        navigate('/admin/list')
         
       } else if (response.status !== 500) {
         setRes(false)
@@ -51,6 +56,7 @@ function Example({ showModal, handleOpenModal }) {
         // updateChanged();
       }
     } catch (err) {
+        console.error(err);
       setRes(false)
       toast.error("something went wrong");
     }
@@ -61,7 +67,7 @@ function Example({ showModal, handleOpenModal }) {
   return (
     <>
      <Modal
-  show={showModal}
+  show={true}
   onHide={handleOpenModal}
   backdrop="static"
   keyboard={false}
