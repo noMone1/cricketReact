@@ -19,10 +19,9 @@ const ProfileDropdown = () => {
         <i className="fa fa-user-circle" aria-hidden="true" style={{marginRight:"2px"}}></i>{user?.name ||""} </span>
       </Dropdown.Toggle>
 
-      <Dropdown.Menu style={{background:"white"}} >
-        <Dropdown.Item href="#profile" ><b>Profile</b></Dropdown.Item>
+      <Dropdown.Menu  >
+        <Dropdown.Item   ><b>Profile</b></Dropdown.Item>
         <Dropdown.Divider />
-        <Dropdown.Item href="#settings"><b>Settings</b></Dropdown.Item>
         <Dropdown.Divider />
         <Dropdown.Item onClick={logout}><b>Logout</b></Dropdown.Item>
       </Dropdown.Menu>

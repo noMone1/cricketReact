@@ -9,9 +9,9 @@ import LoginAdmin from "../modal/LoginAdmin";
 import { useNavigate } from 'react-router-dom';
 function Table() {
   // console.log(localStorage.getItem("user"))
-  const [query,setQuery] = useState('')
+  const [query, setQuery] = useState('')
   const navigate = useNavigate();
-  if(!localStorage.getItem('isAdmin')===true){
+  if (!localStorage.getItem('isAdmin') === true) {
     navigate('/admin');
   }
   const [data, setData] = useState([]);
@@ -43,7 +43,7 @@ function Table() {
   const fetchData = async (start, limit) => {
     try {
       const response = await fetch(
-        config.BASE_URL + "api/tenant/users?start=" + start + "&limit=" + limit+query,
+        config.BASE_URL + "api/tenant/users?start=" + start + "&limit=" + limit + query,
         {
           headers: {
             access_token: localStorage.getItem("access_token"),
@@ -60,32 +60,32 @@ function Table() {
   };
   useEffect(() => {
     fetchData(0, 10);
-  }, [changed,query]);
+  }, [changed, query]);
   return (
-    <section className="content">
-      <div className="content-header mt-1">
-        <div className="container-fluid">
+    <section className="content" >
+      <div className="content-header mt-1" >
+      
           <div className="row m-0">
-            <div className="col-sm-6">
-              <ol
-                className="breadcrumb"
-                style={{ display: "flex", justifyContent: "flex-end" }}
-              >
-                <li>
-                  <button
-                    className="btn btn-primary"
-                    type="button"
-                    onClick={handleOpenModal}
-                    data-toggle="modal"
-                    data-target="#exampleModalCenter"
-                  >
-                    <i className="fa fa-plus"></i> Add
-                  </button>
-                </li>
-              </ol>
-            </div>
+
+            <ol
+              className="breadcrumb"
+              style={{ display: "flex", justifyContent: "flex-end" }}
+            >
+              <li>
+                <button
+                  className="btn btn-primary"
+                  type="button"
+                  onClick={handleOpenModal}
+                  data-toggle="modal"
+                  data-target="#exampleModalCenter"
+                >
+                  <i className="fa fa-plus"></i> Add
+                </button>
+              </li>
+            </ol>
+
           </div>
-        </div>
+        
       </div>
 
       {
@@ -97,8 +97,8 @@ function Table() {
         />
       }
 
-      <div className="card">
-        <div className="card-header">
+      <div className="card" >
+        <div className="card-header" style={{background:"#4d3157"}}>
           <div
             className="card-title "
             style={{ display: "flex", maxHeight: "40px" }}
@@ -112,11 +112,9 @@ function Table() {
               onKeyUp={(event) => handleInputChange(event.target.value)}
             />
           </div>
-          {/* filter will always be placed here.. */}
-          {/* <Filters filter={filter}/> */}
         </div>
 
-        <div className="card-body table-responsive p-0">
+        <div className="card-body table-responsive ">
           <table className="table table-bordered table-hover">
             <thead>
               <tr>

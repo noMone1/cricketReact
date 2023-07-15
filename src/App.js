@@ -15,13 +15,14 @@ import {loginVisible} from './Atoms/Globals'
 import LoginAdmin from './components/modal/LoginAdmin'
 
 function UserView() {
-
+  const [login,setLogin] = useAtom(loginVisible)
   return (
-    <div className=""> 
+    <div className="" > 
     <ToastContainer />
     <div style = {{position:'sticky',top:0,zIndex:1}}>
         <Header />
       </div>
+    { login && <div>
       <ul class="list-group p-0" style={{background:"orange"}} >
         <div style={{display:"flex"}} >
          <li class="list-group-item" style={{background:"orange",color:"white"}} ><b>Home</b></li>
@@ -53,6 +54,20 @@ function UserView() {
           <RightSection />
         </div>
       </div>
+      </div>}
+      {!login && <div className=" scrollable-content container-fluid  " >
+            <div className="container " >
+            <Router>
+            <Routes>
+                
+                <Route path="/"  element={<Tables/>} /> {/* Home component */}
+                <Route path="/admin"  element={<LoginAdmin/>} /> {/* Home component */}
+                <Route path="/admin/list"  element={<Tables/>} /> {/* Home component */}
+                {/* <Route path="/match/:id" element={<MiddleSection/>} /> About component */}
+                </Routes>
+                </Router>
+            </div>
+          </div>}
     </div>
   );
 }
