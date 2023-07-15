@@ -53,7 +53,7 @@ function Table() {
       const data = await response.json();
       // console.log(data.users);
       setData(data.users); // Update the state with the fetched data
-      setTotalPages(data.totalCount < 10 ? 1 : data.totalCount);
+      setTotalPages(data.totalCount < 10 ? 1 : (data.totalCount/10)+1);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -70,7 +70,8 @@ function Table() {
             <ol
               className="breadcrumb"
               style={{ display: "flex", justifyContent: "flex-end" }}
-            >
+>
+              
               <li>
                 <button
                   className="btn btn-primary"

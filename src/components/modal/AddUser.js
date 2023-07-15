@@ -60,7 +60,8 @@ function AddUser({ showModal, handleOpenModal, item,updateChanged }) {
       >
         <Modal.Header closeButton style={{ background: "#480760" }}>
           <Modal.Title style={{ color: "White" }}>
-            <b>Add New User</b>
+           {!item.name &&<b>Add New User</b> } 
+           {item.name &&<b>Update User</b> } 
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>

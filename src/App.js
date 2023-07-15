@@ -56,7 +56,7 @@ function UserView() {
       </div>
       </div>}
       {!login && <div className=" scrollable-content container-fluid  " >
-            <div className="container " >
+            <div className=" " >
             <Router>
             <Routes>
                 
