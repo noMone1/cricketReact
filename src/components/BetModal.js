@@ -8,21 +8,21 @@ const BetModal = (props) => {
 
   const handleDecrease = (num) => {
     if(num===1){
-    if (quantity > 0) {
-      setQuantity(quantity - 0.01);
+    if (quantity >= 1.02) {
+      setQuantity(quantity - 0.02);
     }
   }
     if(num===2){
-      setQuantity2(quantity2/2);
+      setQuantity2(quantity2>0?quantity2-1:0);
   }
   };
 
   const handleIncrease = (num) => {
     if(num===1){
-    setQuantity(quantity + 0.01);
+    setQuantity(quantity + 0.02);
     }
     if(num===2){
-    setQuantity2(quantity2 +(quantity2*2) );
+    setQuantity2(quantity2 +1 );
     }
   };
   return (
@@ -30,14 +30,14 @@ const BetModal = (props) => {
     <div className="row p-1">
       <div className="col-6">
         <div className="input-group input-group-lg mb-3 p-0" width="full">
-            <button id="minusButton1" type="button" style={{background:"#827879"}} className="btn btn-light btn-lg"
-            onClick={()=>handleDecrease(2)} data-field="quantity1">
+            <button id="minusButton1" type="button" style={{background:"#caf5fa"}} className="btn btn-light btn-lg"
+            onClick={()=>handleDecrease(1)} data-field="quantity1">
               <i className="fa fa-minus" />
             </button>
           <input type="text" className="form-control input-number" name="quantity1" value={quantity}  min={0} step="0.01" style={{padding:"0"}} />
           
-            <button id="plusButton1" type="button" style={{background:"#827879"}} className="btn btn-light btn-block" 
-            onClick={()=>handleIncrease(2)} data-field="quantity1">
+            <button id="plusButton1" type="button" style={{background:"#caf5fa"}} className="btn btn-light btn-block" 
+            onClick={()=>handleIncrease(1)} data-field="quantity1">
               <i className="fa fa-plus" />
             </button>
           
@@ -46,12 +46,12 @@ const BetModal = (props) => {
       <div className="col-6">
         <div className="input-group input-group-lg mb-3">
           
-            <button id="minusButton2" type="button" style={{background:"#827879"}} className="btn btn-light btn-lg" 
+            <button id="minusButton2" type="button" style={{background:"#caf5fa"}} className="btn btn-light btn-lg" 
             onClick={()=>handleDecrease(2)} data-field="quantity2">
               <i className="fa fa-minus" />
             </button>
           <input type="text" className="form-control input-number" name="quantity2" value={quantity2} min={0} step="0.01" style={{padding:"0"}} />
-            <button id="plusButton2" type="button" style={{background:"#827879"}} className="btn btn-light btn-lg"
+            <button id="plusButton2" type="button" style={{background:"#caf5fa"}} className="btn btn-light btn-lg"
             onClick={()=>handleIncrease(2)} data-field="quantity2">
               <i className="fa fa-plus" />
             </button>
@@ -60,30 +60,30 @@ const BetModal = (props) => {
     </div>
     <div className="row mb-3 p-1">
       <div className="col-3">
-        <button type="button" className="btn btn-light w-100 " style={{borderRadius: '10px',background:"#918d8d"}} onClick={()=>setQuantity2(1000)}>1000</button>
+        <button type="button" className="btn btn-light w-100 " style={{borderRadius: '10px',background:"white"}} onClick={()=>setQuantity2(1000)}>1000</button>
       </div>
       <div className="col-3">
-        <button type="button" className="btn btn-light w-100" style={{borderRadius: '10px',background:"#918d8d"}} onClick={()=>setQuantity2(5000)}>5000</button>
+        <button type="button" className="btn btn-light w-100" style={{borderRadius: '10px',background:"white"}} onClick={()=>setQuantity2(5000)}>5000</button>
       </div>
       <div className="col-3">
-        <button type="button" className="btn btn-light w-100" style={{borderRadius: '10px',background:"#918d8d"}} onClick={()=>setQuantity2(10000)}>10000</button>
+        <button type="button" className="btn btn-light w-100" style={{borderRadius: '10px',background:"white"}} onClick={()=>setQuantity2(10000)}>10000</button>
       </div>
       <div className="col-3">
-        <button type="button" className="btn btn-light w-100" style={{borderRadius: '10px',background:"#918d8d"}} onClick={()=>setQuantity2(20000)}>20000</button>
+        <button type="button" className="btn btn-light w-100" style={{borderRadius: '10px',background:"white"}} onClick={()=>setQuantity2(20000)}>20000</button>
       </div>
     </div>
     <div className="row mb-3 p-1">
       <div className="col-3">
-        <button type="button" className="btn btn-light w-100" style={{borderRadius: '10px',background:"#918d8d"}} onClick={()=>setQuantity(50000)}>50000</button>
+        <button type="button" className="btn btn-light w-100" style={{borderRadius: '10px',background:"white"}} onClick={()=>setQuantity(50000)}>50000</button>
       </div>
       <div className="col-3">
-        <button type="button" className="btn btn-light w-100" style={{borderRadius: '10px',background:"#918d8d"}} onClick={()=>setQuantity(100000)}>100000</button>
+        <button type="button" className="btn btn-light w-100" style={{borderRadius: '10px',background:"white"}} onClick={()=>setQuantity(100000)}>100000</button>
       </div>
       <div className="col-3">
-        <button type="button" className="btn btn-light w-100" style={{borderRadius: '10px',background:"#918d8d"}} onClick={()=>setQuantity(200000)}>200000</button>
+        <button type="button" className="btn btn-light w-100" style={{borderRadius: '10px',background:"white"}} onClick={()=>setQuantity(200000)}>200000</button>
       </div>
       <div className="col-3">
-        <button type="button" className="btn btn-light w-100" style={{borderRadius: '10px',background:"#918d8d"}} onClick={()=>setQuantity(500000)}>500000</button>
+        <button type="button" className="btn btn-light w-100" style={{borderRadius: '10px',background:"white"}} onClick={()=>setQuantity(500000)}>500000</button>
       </div>
     </div>
     <div className="row p-1">
@@ -91,7 +91,7 @@ const BetModal = (props) => {
         <button id="cancelButton" type="button" onClick={props.visibility} className="btn btn-light btn-lg w-100">Cancel</button>
       </div>
       <div className="col-6 d-flex justify-content-end">
-        <button type="button" disabled={betActive?"true":"false"} className="btn btn-danger btn-lg w-100">Place Bet</button>
+        <button type="button " disabled={betActive?"true":"false"} className="btn btn-danger btn-lg w-100" style={{background:"red"}}>Place Bet</button>
       </div>
     </div>
   </div>
