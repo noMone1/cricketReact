@@ -77,6 +77,7 @@ function Table() {
                   className="btn btn-primary"
                   type="button"
                   onClick={handleOpenModal}
+                  
                   data-toggle="modal"
                   data-target="#exampleModalCenter"
                 >
